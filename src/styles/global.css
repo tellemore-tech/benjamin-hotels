@@ -1,0 +1,41 @@
+@import url('https://use.typekit.net/jsu0tuv.css');
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
+body {
+  font-family: 'novecento-sans-wide', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes slidingPoints {
+  0% {
+    left: calc(100vw);
+  }
+
+  100% {
+    left: -280px;
+  }
+}
+
+main {
+  max-width: '100vw';
+  overflow-x: 'hidden';
+}
+
+.fancy-lofts .keen-slider__slide {
+  height: 375px !important;
+  width: 300px !important;
+  min-height: 375px !important;
+  min-width: 300px !important;
+  max-height: 375px !important;
+  max-width: 300px !important;
+  transition: height 0.3s ease;
+}
+
+.fancy-lofts .keen-slider__slide.active {
+  height: 483px !important;
+  width: 350px !important;
+  max-height: 483px !important;
+  max-width: 350px !important;
+  min-width: 350px !important;
+}
