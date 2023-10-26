@@ -38,7 +38,7 @@ export const propertyData = [
     slug: 'unity-farm-inn-and-spa',
     title: 'Unity Farm, Inn, & Spa',
     description:
-      '<p>A 35-acre luxury luxury rural retreat.</p><p>Hotel & cabin accommodations, restaurant, winery, spa, and more.</p>',
+      '<p>A 35-acre luxury rural retreat.</p><p>Hotel & cabin accommodations, restaurant, winery, spa, and more.</p>',
     image: 'Unity-Farm-Inn-Spa-02.jpg',
     alt: 'Unity Farm, Inn, & Spa Kingston Ontario',
     settings: {

@@ -56,12 +56,12 @@ const PageTopper = ({ isDesktop }: WrapperProps) => {
                 display: 'flex',
                 flexDir: 'column',
                 textAlign: 'center',
-                maxW: '750px',
+                maxW: '735px',
                 fontSize: '15px',
                 color: 'white',
               }}
             >
-              <Text fontWeight={400} fontSize={'15px'} letterSpacing={'.11em'}>
+              <Text fontWeight={400} fontSize={'15px'}>
                 Benjamin Hotels is a collection of properties in Kingston,
                 Ontario committed to style, revitalization, and a modern
                 approach to hospitality. With thoughtful craftsmanship and

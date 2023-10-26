@@ -10,7 +10,7 @@ export const PreviewData = [
   },
   {
     slug: 'dwell-aparthotels',
-    title: 'Dwell Aoarthotels',
+    title: 'Dwell Aparthotels',
     image: 'Dwell-Aparthotels-01.jpg',
     alt: 'Dwell Aparthotels Kingston Ontario',
     settings: {
@@ -46,7 +46,7 @@ export const PreviewData = [
   },
   {
     slug: 'dwell-aparthotels',
-    title: 'Dwell Aoarthotels',
+    title: 'Dwell Aparthotels',
     image: 'Dwell-Aparthotels-02.jpg',
     alt: 'Dwell Aparthotels Kingston Ontario',
     settings: {
@@ -73,7 +73,7 @@ export const PreviewData = [
   },
   {
     slug: 'dwell-aparthotels',
-    title: 'Dwell Aoarthotels',
+    title: 'Dwell Aparthotels',
     image: 'Dwell-Aparthotels-03.jpg',
     alt: 'Dwell Aparthotels Kingston Ontario',
     settings: {
@@ -91,7 +91,7 @@ export const PreviewData = [
   },
   {
     slug: 'dwell-aparthotels',
-    title: 'Dwell Aoarthotels',
+    title: 'Dwell Aparthotels',
     image: 'Dwell-Aparthotels-04.jpg',
     alt: 'Dwell Aparthotels Kingston Ontario',
     settings: {
@@ -145,7 +145,7 @@ export const PreviewData = [
   },
   {
     slug: 'dwell-aparthotels',
-    title: 'Dwell Aoarthotels',
+    title: 'Dwell Aparthotels',
     image: 'Dwell-Aparthotels-05.jpg',
     alt: 'Dwell Aparthotels Kingston Ontario',
     settings: {

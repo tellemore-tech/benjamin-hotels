@@ -50,6 +50,7 @@ const PropertyRevealCard = ({
           top: 0,
           left: 0,
           transition: 'opacity .2s ease',
+          zIndex: 2,
         },
         '&:hover:before': {
           opacity: 0,
@@ -64,6 +65,7 @@ const PropertyRevealCard = ({
           fontWeight: 700,
           textShadow: '0px 2px 2px rgba(0, 0, 0, 0.50)',
           letterSpacing: '.15em',
+          zIndex: 1,
         }}
       >
         {title}
@@ -71,17 +73,31 @@ const PropertyRevealCard = ({
       {description && (
         <Box
           sx={{
+            fontFamily: "'Actor', sans-serif",
             color: 'white',
             textAlign: 'center',
             fontSize: '12px',
             fontWeight: 700,
             letterSpacing: '0.19em',
-            textShadow: '0px 2px 2px rgba(0, 0, 0, 0.50)',
-            maxW: '300px',
+            textShadow: '-2px 1px 4px rgba(0, 0, 0, .8)',
+            maxW: '280px',
+            zIndex: 1,
           }}
           dangerouslySetInnerHTML={{ __html: description }}
         />
       )}
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          background:
+            'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 20%, rgba(0, 0, 0, .2) 60%, rgba(0, 0, 0, 0.00) 80%)',
+          transition: 'opacity .2s ease',
+        }}
+      />
     </Box>
   );
 };

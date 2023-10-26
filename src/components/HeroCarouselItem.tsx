@@ -37,19 +37,25 @@ const HeroCarouselItem = ({
         gap={'10px'}
         color={'white'}
         fontWeight={'700'}
-        textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
+        textShadow={'0px 2px 3px rgba(0, 0, 0, 0.35)'}
         letterSpacing={'.15em'}
       >
         <ChevronLeftIcon
           fontSize={'24px'}
           onClick={() => onPrev()}
           cursor={'pointer'}
+          sx={{
+            filter: 'drop-shadow(0px 2px 2px rgb(0, 0, 0, .4))',
+          }}
         />
         <Text fontSize={'14px'}>{title}</Text>
         <ChevronRightIcon
           fontSize={'24px'}
           onClick={() => onNext()}
           cursor={'pointer'}
+          sx={{
+            filter: 'drop-shadow(0px 2px 2px rgb(0, 0, 0, .4))',
+          }}
         />
       </Box>
     </Box>

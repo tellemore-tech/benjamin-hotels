@@ -88,6 +88,9 @@ const HeroCarousel = () => {
           fontSize={'240px'}
           color={'background.light'}
           dropShadow={'0px 4px 25px -6px rgba(0, 0, 0, 0.30)'}
+          sx={{
+            filter: 'drop-shadow(0px 4px 10px rgb(0, 0, 0, .3))',
+          }}
         />
       </Box>
     </Box>

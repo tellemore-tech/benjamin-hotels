@@ -129,6 +129,7 @@ const Footer = ({ isDesktop, onPrivacy }: FooterProps) => {
             fontWeight={'200'}
             letterSpacing={'.15em'}
             paddingX={'20px'}
+            _hover={{ opacity: '.8' }}
           >
             Coming Soon
           </Button>

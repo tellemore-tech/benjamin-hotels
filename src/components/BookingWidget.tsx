@@ -74,17 +74,22 @@ const BookingWidget = () => {
   }
 
   const submitForm = () => {
-    if (checkIn && checkOut && guests) {
-      const checkInFormatted = `${format(checkIn, 'yyyy')}-${format(
+    if (!isDesktop) {
+      window.open(
+        'https://benjaminhotelgroup.cloudbeds.com/#/?city=Kingston&check_in=undefined&check_out=undefined&page=undefined',
+        '_blank',
+      );
+    } else if (checkIn && checkOut && guests) {
+      const checkInFormatted = `${format(checkIn, 'dd')}/${format(
         checkIn,
         'MM',
-      )}-${format(checkIn, 'dd')}`;
-      const checkOutFormatted = `${format(checkOut, 'yyyy')}-${format(
+      )}/${format(checkIn, 'yyyy')}`;
+      const checkOutFormatted = `${format(checkOut, 'dd')}/${format(
         checkOut,
         'MM',
-      )}-${format(checkOut, 'dd')}`;
+      )}/${format(checkOut, 'yyyy')}`;
       window.open(
-        `https://hotels.cloudbeds.com/reservation/b5AkPT?#checkin=${checkInFormatted}&checkout=${checkOutFormatted}`,
+        `https://benjaminhotelgroup.cloudbeds.com/#/?city=Kingston&check_in=${checkInFormatted}&check_out=${checkOutFormatted}`,
         '_blank',
       );
     } else {
@@ -98,7 +103,7 @@ const BookingWidget = () => {
         display={'flex'}
         flexDir={isTablet ? 'row' : 'column'}
         w={isDesktop ? '920px' : isTablet ? '500px' : '330px'}
-        h={isDesktop ? '74px' : isTablet ? 'calc(74px*2)' : '100%'}
+        h={isDesktop ? '74px' : '100%'}
         alignContent={'center'}
         alignItems={'center'}
         bg={'white'}
@@ -122,199 +127,217 @@ const BookingWidget = () => {
           },
         }}
       >
-        <Popover>
-          <PopoverTrigger>
-            <Box
-              flex={isTablet ? 1 : 'auto'}
-              display={'flex'}
-              flexDirection={'column'}
-              gap={'12px'}
-              justifyContent={'center'}
-              pl={'16px'}
-              height={isDesktop ? '100%' : '74px'}
-              borderRight={isTablet ? '3px solid' : 'none'}
-              borderBottom={isTablet ? 'none' : '3px solid'}
-              borderColor={'brand.200'}
-              minWidth={'100px'}
-              cursor={'pointer'}
-              width={'100%'}
-            >
-              <Text
-                fontSize={'12px'}
-                color={error && !checkIn ? 'red' : 'black'}
-              >
-                CHECK IN
-              </Text>
-              <Heading fontSize={'12px'} fontWeight={'200'} color={'brand.700'}>
-                {checkIn ? format(checkIn, 'PP') : 'Add Date'}
-              </Heading>
-            </Box>
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverBody>
-              <DayPicker
-                mode="single"
-                selected={checkIn}
-                onSelect={setCheckIn}
-                footer={footerIn}
-                fromDate={new Date()}
-                toDate={checkOut}
-                modifiersClassNames={{
-                  selected: 'rdp-day_selected custom-day-picker-theme-selected',
-                  today: 'custom-day-picker-theme-today',
-                }}
-              />
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+        {' '}
+        {isDesktop && (
+          <>
+            <Popover>
+              <PopoverTrigger>
+                <Box
+                  flex={isTablet ? 1 : 'auto'}
+                  display={'flex'}
+                  flexDirection={'column'}
+                  gap={'12px'}
+                  justifyContent={'center'}
+                  pl={'16px'}
+                  height={isDesktop ? '100%' : '74px'}
+                  borderRight={isTablet ? '3px solid' : 'none'}
+                  borderBottom={isTablet ? 'none' : '3px solid'}
+                  borderColor={'brand.200'}
+                  minWidth={'100px'}
+                  cursor={'pointer'}
+                  width={'100%'}
+                >
+                  <Text
+                    fontSize={'12px'}
+                    color={error && !checkIn ? 'red' : 'black'}
+                  >
+                    CHECK IN
+                  </Text>
+                  <Heading
+                    fontSize={'12px'}
+                    fontWeight={'200'}
+                    color={'brand.700'}
+                  >
+                    {checkIn ? format(checkIn, 'PP') : 'Add Date'}
+                  </Heading>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody>
+                  <DayPicker
+                    mode="single"
+                    selected={checkIn}
+                    onSelect={setCheckIn}
+                    footer={footerIn}
+                    fromDate={new Date()}
+                    toDate={checkOut}
+                    modifiersClassNames={{
+                      selected:
+                        'rdp-day_selected custom-day-picker-theme-selected',
+                      today: 'custom-day-picker-theme-today',
+                    }}
+                  />
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
 
-        <Popover>
-          <PopoverTrigger>
-            <Box
-              flex={isTablet ? 1 : 'auto'}
-              display={'flex'}
-              flexDirection={'column'}
-              gap={'12px'}
-              justifyContent={'center'}
-              pl={'16px'}
-              height={isDesktop ? '100%' : '74px'}
-              borderRight={isTablet ? '3px solid' : 'none'}
-              borderBottom={isTablet ? 'none' : '3px solid'}
-              borderColor={'brand.200'}
-              minWidth={'100px'}
-              cursor={'pointer'}
-              width={'100%'}
-            >
-              <Text
-                fontSize={'12px'}
-                color={error && !checkOut ? 'red' : 'black'}
-              >
-                CHECK OUT
-              </Text>
-              <Heading fontSize={'12px'} fontWeight={'200'} color={'brand.700'}>
-                {checkOut ? format(checkOut, 'PP') : 'Add Date'}
-              </Heading>
-            </Box>
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverBody>
-              <DayPicker
-                mode="range"
-                selected={range}
-                onDayClick={setCheckOut}
-                footer={footerOut}
-                fromDate={checkIn || new Date()}
-                disabled={checkIn || new Date()}
-                min={3}
-                max={29}
-                modifiersClassNames={{
-                  selected: 'rdp-day_selected custom-day-picker-theme-selected',
-                  today: 'custom-day-picker-theme-today',
-                }}
-              />
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+            <Popover>
+              <PopoverTrigger>
+                <Box
+                  flex={isTablet ? 1 : 'auto'}
+                  display={'flex'}
+                  flexDirection={'column'}
+                  gap={'12px'}
+                  justifyContent={'center'}
+                  pl={'16px'}
+                  height={isDesktop ? '100%' : '74px'}
+                  borderRight={isTablet ? '3px solid' : 'none'}
+                  borderBottom={isTablet ? 'none' : '3px solid'}
+                  borderColor={'brand.200'}
+                  minWidth={'100px'}
+                  cursor={'pointer'}
+                  width={'100%'}
+                >
+                  <Text
+                    fontSize={'12px'}
+                    color={error && !checkOut ? 'red' : 'black'}
+                  >
+                    CHECK OUT
+                  </Text>
+                  <Heading
+                    fontSize={'12px'}
+                    fontWeight={'200'}
+                    color={'brand.700'}
+                  >
+                    {checkOut ? format(checkOut, 'PP') : 'Add Date'}
+                  </Heading>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody>
+                  <DayPicker
+                    mode="range"
+                    selected={range}
+                    onDayClick={setCheckOut}
+                    footer={footerOut}
+                    fromDate={checkIn || new Date()}
+                    disabled={checkIn || new Date()}
+                    min={3}
+                    max={29}
+                    modifiersClassNames={{
+                      selected:
+                        'rdp-day_selected custom-day-picker-theme-selected',
+                      today: 'custom-day-picker-theme-today',
+                    }}
+                  />
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
 
-        <Popover>
-          <PopoverTrigger>
-            <Box
-              flex={isTablet ? 1 : 'auto'}
-              display={'flex'}
-              flexDirection={'column'}
-              gap={'12px'}
-              justifyContent={'center'}
-              pl={'16px'}
-              height={isDesktop ? '100%' : '74px'}
-              borderBottom={isTablet ? 'none' : '3px solid'}
-              borderColor={'brand.200'}
-              minWidth={'100px'}
-              cursor={'pointer'}
-              width={'100%'}
-            >
-              <Text
-                fontSize={'12px'}
-                color={error && !guests ? 'red' : 'black'}
-              >
-                GUESTS
-              </Text>
-              <Heading fontSize={'12px'} fontWeight={'200'} color={'brand.700'}>
-                {guests || 'Add Guests'}
-              </Heading>
-            </Box>
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverBody px={0}>
-              <Box pt={'20px'}>
-                <List display={'flex'} flexDirection={'column'} gap={'4px'}>
-                  <ListItem
-                    onClick={() => setGuests(1)}
-                    key={1}
-                    sx={{
-                      py: '6px',
-                      px: '12px',
-                      cursor: 'pointer',
-                      backgroundColor:
-                        guests === 1 ? 'brandAlpha.200' : 'transparent',
-                      '&:hover': { backgroundColor: 'brandAlpha.400' },
-                    }}
+            <Popover>
+              <PopoverTrigger>
+                <Box
+                  flex={isTablet ? 1 : 'auto'}
+                  display={'flex'}
+                  flexDirection={'column'}
+                  gap={'12px'}
+                  justifyContent={'center'}
+                  pl={'16px'}
+                  height={isDesktop ? '100%' : '74px'}
+                  borderBottom={isTablet ? 'none' : '3px solid'}
+                  borderColor={'brand.200'}
+                  minWidth={'100px'}
+                  cursor={'pointer'}
+                  width={'100%'}
+                >
+                  <Text
+                    fontSize={'12px'}
+                    color={error && !guests ? 'red' : 'black'}
                   >
-                    1
-                  </ListItem>
-                  <ListItem
-                    onClick={() => setGuests(2)}
-                    key={2}
-                    sx={{
-                      py: '6px',
-                      px: '12px',
-                      cursor: 'pointer',
-                      backgroundColor:
-                        guests === 2 ? 'brandAlpha.200' : 'transparent',
-                      '&:hover': { backgroundColor: 'brandAlpha.400' },
-                    }}
+                    GUESTS
+                  </Text>
+                  <Heading
+                    fontSize={'12px'}
+                    fontWeight={'200'}
+                    color={'brand.700'}
                   >
-                    2
-                  </ListItem>
-                  <ListItem
-                    onClick={() => setGuests(3)}
-                    key={3}
-                    sx={{
-                      py: '6px',
-                      px: '12px',
-                      cursor: 'pointer',
-                      backgroundColor:
-                        guests === 3 ? 'brandAlpha.200' : 'transparent',
-                      '&:hover': { backgroundColor: 'brandAlpha.400' },
-                    }}
-                  >
-                    3
-                  </ListItem>
-                  <ListItem
-                    onClick={() => setGuests(4)}
-                    key={4}
-                    sx={{
-                      py: '6px',
-                      px: '12px',
-                      cursor: 'pointer',
-                      backgroundColor:
-                        guests === 4 ? 'brandAlpha.200' : 'transparent',
-                      '&:hover': { backgroundColor: 'brandAlpha.400' },
-                    }}
-                  >
-                    4
-                  </ListItem>
-                </List>
-              </Box>
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
-
+                    {guests || 'Add Guests'}
+                  </Heading>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverBody px={0}>
+                  <Box pt={'20px'}>
+                    <List display={'flex'} flexDirection={'column'} gap={'4px'}>
+                      <ListItem
+                        onClick={() => setGuests(1)}
+                        key={1}
+                        sx={{
+                          py: '6px',
+                          px: '12px',
+                          cursor: 'pointer',
+                          backgroundColor:
+                            guests === 1 ? 'brandAlpha.200' : 'transparent',
+                          '&:hover': { backgroundColor: 'brandAlpha.400' },
+                        }}
+                      >
+                        1
+                      </ListItem>
+                      <ListItem
+                        onClick={() => setGuests(2)}
+                        key={2}
+                        sx={{
+                          py: '6px',
+                          px: '12px',
+                          cursor: 'pointer',
+                          backgroundColor:
+                            guests === 2 ? 'brandAlpha.200' : 'transparent',
+                          '&:hover': { backgroundColor: 'brandAlpha.400' },
+                        }}
+                      >
+                        2
+                      </ListItem>
+                      <ListItem
+                        onClick={() => setGuests(3)}
+                        key={3}
+                        sx={{
+                          py: '6px',
+                          px: '12px',
+                          cursor: 'pointer',
+                          backgroundColor:
+                            guests === 3 ? 'brandAlpha.200' : 'transparent',
+                          '&:hover': { backgroundColor: 'brandAlpha.400' },
+                        }}
+                      >
+                        3
+                      </ListItem>
+                      <ListItem
+                        onClick={() => setGuests(4)}
+                        key={4}
+                        sx={{
+                          py: '6px',
+                          px: '12px',
+                          cursor: 'pointer',
+                          backgroundColor:
+                            guests === 4 ? 'brandAlpha.200' : 'transparent',
+                          '&:hover': { backgroundColor: 'brandAlpha.400' },
+                        }}
+                      >
+                        4
+                      </ListItem>
+                    </List>
+                  </Box>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          </>
+        )}
         <Button
           flex={isTablet ? 1 : 'auto'}
           width={isDesktop ? 'auto' : '100%'}
