@@ -80,8 +80,13 @@ const PropertyRevealCard = ({
             fontWeight: 700,
             letterSpacing: '0.19em',
             textShadow: '-2px 1px 4px rgba(0, 0, 0, .8)',
-            maxW: '280px',
             zIndex: 1,
+            '& p em': {
+              fontStyle: 'normal',
+              fontFamily: 'heading',
+              fontSize: '14px',
+              fontWeight: 700,
+            },
           }}
           dangerouslySetInnerHTML={{ __html: description }}
         />
