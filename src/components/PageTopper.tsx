@@ -41,10 +41,10 @@ const PageTopper = ({ isDesktop }: WrapperProps) => {
             alignContent={'center'}
             alignItems={'center'}
             flexWrap={'nowrap'}
-            pt={isDesktop ? '80px' : '40px'}
-            pb={'20px'}
+            pt={isDesktop ? '52px' : '40px'}
+            pb={isDesktop ? '60px' : '40px'}
             color={'brand.800'}
-            gap={'36px'}
+            gap={'50px'}
           >
             <Image
               src="\Logos-and-Icons\PNG\BH-Name-Linen.png"
@@ -56,12 +56,17 @@ const PageTopper = ({ isDesktop }: WrapperProps) => {
                 display: 'flex',
                 flexDir: 'column',
                 textAlign: 'center',
-                maxW: '735px',
+                maxW: '790px',
                 fontSize: '15px',
                 color: 'white',
               }}
             >
-              <Text fontWeight={400} fontSize={'15px'}>
+              <Text
+                fontWeight={400}
+                fontSize={'15px'}
+                fontFamily={'Actor'}
+                color={'#F2ECE1'}
+              >
                 Benjamin Hotels is a collection of properties in Kingston,
                 Ontario committed to style, revitalization, and a modern
                 approach to hospitality. With thoughtful craftsmanship and

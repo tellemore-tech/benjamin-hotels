@@ -99,7 +99,7 @@ const Footer = ({ isDesktop, onPrivacy }: FooterProps) => {
         <Text
           fontSize={'10px'}
           color={'background.dark'}
-          fontWeight={'200'}
+          fontWeight={400}
           textTransform={'uppercase'}
           marginBottom={isDesktop ? 0 : '10px'}
         >
@@ -112,6 +112,9 @@ const Footer = ({ isDesktop, onPrivacy }: FooterProps) => {
           width={isDesktop ? '464px' : '100%'}
         >
           <Input
+            fontFamily={'novecento-sans-wide'}
+            fontWeight={100}
+            letterSpacing={'0.19em'}
             fontSize={'10px'}
             h={'27px'}
             variant="flushed"
@@ -120,7 +123,7 @@ const Footer = ({ isDesktop, onPrivacy }: FooterProps) => {
             value={'EMAIL'}
             cursor={'not-allowed'}
             disabled
-            _disabled={{ opacity: 1 }}
+            _disabled={{ opacity: 0.6 }}
           />
           <Button
             variant={'solidBrand'}
