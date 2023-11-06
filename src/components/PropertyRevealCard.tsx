@@ -1,6 +1,5 @@
 import { SimpleCardProps } from '@/utils/types';
 import { Box, Text } from '@chakra-ui/react';
-import { navigate } from 'gatsby';
 
 const PropertyRevealCard = ({
   title,
@@ -12,7 +11,7 @@ const PropertyRevealCard = ({
 }: SimpleCardProps) => {
   const handleNavigate = () => {
     if (url) {
-      navigate(url);
+      window.open(url, '_blank');
     }
   };
   return (

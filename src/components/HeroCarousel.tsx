@@ -63,7 +63,7 @@ const HeroCarousel = () => {
     >
       {PreviewData.map((i) => (
         <HeroCarouselItem
-          key={i.slug}
+          key={i.image}
           slug={i.slug}
           title={i.title}
           image={i.image}

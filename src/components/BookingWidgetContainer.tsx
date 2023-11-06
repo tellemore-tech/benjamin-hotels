@@ -21,6 +21,7 @@ const BookingWidgetContainer = ({ isDesktop }: WrapperProps) => {
           fontWeight: 200,
           color: 'white',
           letterSpacing: '0.08em',
+          textTransform: 'uppercase',
         }}
       >
         Where will you stay?

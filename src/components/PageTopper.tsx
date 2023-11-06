@@ -50,6 +50,7 @@ const PageTopper = ({ isDesktop }: WrapperProps) => {
               src="\Logos-and-Icons\PNG\BH-Name-Linen.png"
               alt="Benjamin Hotels Logo"
               width={isDesktop ? '331px' : '240px'}
+              sx={{ imageRendering: 'crisp-edges' }}
             />
             <Box
               sx={{

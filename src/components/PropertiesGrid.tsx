@@ -9,14 +9,15 @@ const PropertiesGrid = ({ isDesktop }: WrapperProps) => {
       w={'100%'}
       bg={'background.light'}
       py={'2px'}
-      px={'2px'}
+      pr={isDesktop ? '2px' : 0}
+      pl={'2px'}
       maxWidth={isDesktop ? '1200px' : '500px'}
       margin={'auto'}
     >
       <Box
         sx={{
           width: 'calc(100% - 2px)',
-          height: isDesktop ? '536px' : '1060px',
+          height: isDesktop ? '536px' : 'auto',
           display: 'grid',
           gridTemplateColumns: isDesktop ? '50% 50%' : '100%',
           gridRow: 'auto auto',

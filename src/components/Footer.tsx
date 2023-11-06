@@ -2,8 +2,6 @@ import { HotelIcon } from '@/icons/icons';
 import { WrapperProps } from '@/utils/types';
 import { Box, Link as ChakraLink, Input, Button, Text } from '@chakra-ui/react';
 
-import { Link } from 'gatsby';
-
 interface FooterProps extends WrapperProps {
   onPrivacy: () => void;
 }
@@ -15,8 +13,7 @@ interface NavItemProps extends WrapperProps {
 const NavItem = ({ name, href, isDesktop }: NavItemProps) => {
   return (
     <ChakraLink
-      as={Link}
-      to={href}
+      href={href}
       color={'background.dark'}
       fontSize={isDesktop ? '10px' : '14px'}
       fontWeight={'400'}
